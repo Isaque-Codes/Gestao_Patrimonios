@@ -1,5 +1,8 @@
 using DotNetEnv;
+using Gestao_Patrimonios.Applications.Services;
 using Gestao_Patrimonios.Contexts;
+using Gestao_Patrimonios.Interfaces;
+using Gestao_Patrimonios.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +22,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// AREAS
+builder.Services.AddScoped<IAreaRepository, AreaRepository>();
+builder.Services.AddScoped<AreaService>();
 
 var app = builder.Build();
 
