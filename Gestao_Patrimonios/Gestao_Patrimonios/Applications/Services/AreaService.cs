@@ -55,7 +55,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
             if (areaExistente != null)
             {
-                throw new DomainException("Já existe uma cadastrada com este nome.");
+                throw new DomainException("Já existe uma área cadastrada com este nome.");
             }
 
             Area area = new Area
@@ -81,7 +81,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
             if (areaExistente != null)
             {
-                throw new DomainException("Já existe uma cadastrada com este nome.");
+                throw new DomainException("Já existe uma área cadastrada com este nome.");
             }
 
             areaBanco.NomeArea = dto.NomeArea;
