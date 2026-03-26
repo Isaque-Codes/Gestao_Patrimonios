@@ -66,7 +66,7 @@ namespace Gestao_Patrimonios.Applications.Services
             _repository.Adicionar(area);
         }
 
-        public void Atualizar(CriarAreaDto dto)
+        public void Atualizar(Guid areaId, CriarAreaDto dto)
         {
             Validar.validarNome(dto.NomeArea);
 
