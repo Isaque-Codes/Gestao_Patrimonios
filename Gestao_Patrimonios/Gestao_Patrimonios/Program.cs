@@ -23,9 +23,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// AREAS
+// AREA
 builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 builder.Services.AddScoped<AreaService>();
+
+// LOCALIZACAO
+builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
+builder.Services.AddScoped<LocalizacaoService>();
 
 var app = builder.Build();
 
