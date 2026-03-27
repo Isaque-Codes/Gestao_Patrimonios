@@ -24,6 +24,12 @@ namespace Gestao_Patrimonios.Repositories
             return _context.Localizacao.Find(localizacaoId);
         }
 
+        public Localizacao BuscarPorNome(Guid areaId, string nomeLocal)
+        {
+            return _context.Localizacao.FirstOrDefault
+                (l => l.NomeLocal.ToLower() == nomeLocal.ToLower() && l.AreaID == areaId);
+        }
+
         public bool AreaExistente(Guid areaId)
         {
             return _context.Area.Any(area => area.AreaID == areaId);

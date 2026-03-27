@@ -51,22 +51,29 @@ namespace Gestao_Patrimonios.Applications.Services
             };
         }
 
-        public void Adicionar(CriarLocalizacaoDto Dto)
+        public void Adicionar(CriarLocalizacaoDto dto)
         {
-            Validar.validarNome(Dto.NomeLocal);
+            Validar.validarNome(dto.NomeLocal);
 
-            if (!_repository.AreaExistente(Dto.AreaID))
+            Localizacao localExistente = _repository.BuscarPorNome(dto.AreaID, dto.NomeLocal);
+
+            if (localExistente != null)
+            {
+                throw new DomainException("Já existe um local cadastrado com este nome nesta área");
+            }
+
+            if (!_repository.AreaExistente(dto.AreaID))
             {
                 throw new DomainException("Área informada inexistente.");
             }
 
             Localizacao localizacao = new Localizacao
             {
-                LocalizacaoID = Dto.AreaID,
-                NomeLocal = Dto.NomeLocal,
-                LocalSAP = Dto.LocalSAP,
-                DescricaoSAP = Dto.DescricaoSAP,
-                AreaID = Dto.AreaID
+                LocalizacaoID = dto.AreaID,
+                NomeLocal = dto.NomeLocal,
+                LocalSAP = dto.LocalSAP,
+                DescricaoSAP = dto.DescricaoSAP,
+                AreaID = dto.AreaID
             };
 
             _repository.Adicionar(localizacao);
@@ -75,6 +82,13 @@ namespace Gestao_Patrimonios.Applications.Services
         public void Atualizar(Guid id, CriarLocalizacaoDto dto)
         {
             Validar.validarNome(dto.NomeLocal);
+
+            Localizacao localExistente = _repository.BuscarPorNome(dto.AreaID, dto.NomeLocal);
+
+            if (localExistente != null)
+            {
+                throw new DomainException("Já existe um local cadastrado com este nome nesta área");
+            }
 
             Localizacao localizacaoBanco = _repository.BuscarPorId(id);
 

@@ -1,0 +1,17 @@
+﻿using Gestao_Patrimonios.Domains;
+
+namespace Gestao_Patrimonios.Interfaces
+{
+    public interface ICidadeRepository
+    {
+        List<Cidade> Listar();
+
+        Cidade BuscarPorId(Guid cidadeId);
+
+        Cidade BuscarPorNome(string nomeCidade, string nomeEstado);
+
+        void Adicionar(Cidade cidade);
+
+        void Atualizar(Cidade cidade);
+    }
+}
