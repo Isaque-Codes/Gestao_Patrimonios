@@ -8,7 +8,7 @@ namespace Gestao_Patrimonios.Interfaces
 
         Cidade BuscarPorId(Guid cidadeId);
 
-        Cidade BuscarPorNome(string nomeCidade, string nomeEstado);
+        Cidade BuscarPorNomeEEstado(string nomeCidade, string nomeEstado);
 
         void Adicionar(Cidade cidade);
 

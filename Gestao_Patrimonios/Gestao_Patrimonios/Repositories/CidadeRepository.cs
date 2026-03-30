@@ -24,10 +24,11 @@ namespace Gestao_Patrimonios.Repositories
             return _context.Cidade.Find(cidadeId);
         }
 
-        public Cidade BuscarPorNome(string nomeCidade, string nomeEstado)
+        public Cidade? BuscarPorNomeEEstado(string nomeCidade, string estado)
         {
-            return _context.Cidade.FirstOrDefault(c => c.NomeCidade.ToLower() == nomeCidade.ToLower()
-            && c.Estado.ToLower() == nomeEstado.ToLower());
+            return _context.Cidade.FirstOrDefault(cidade =>
+                cidade.NomeCidade.ToLower() == nomeCidade.ToLower() &&
+                cidade.Estado.ToLower() == estado.ToLower());
         }
 
         public void Adicionar(Cidade cidade)

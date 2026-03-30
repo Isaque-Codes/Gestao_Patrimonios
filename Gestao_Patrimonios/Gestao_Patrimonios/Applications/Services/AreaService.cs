@@ -49,7 +49,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Adicionar(CriarAreaDto dto)
         {
-            Validar.validarNome(dto.NomeArea);
+            Validar.ValidarNome(dto.NomeArea);
 
             Area areaExistente = _repository.BuscarPorNome(dto.NomeArea);
 
@@ -68,7 +68,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Atualizar(Guid areaId, CriarAreaDto dto)
         {
-            Validar.validarNome(dto.NomeArea);
+            Validar.ValidarNome(dto.NomeArea);
 
             Area areaBanco = _repository.BuscarPorId(areaId);
 
