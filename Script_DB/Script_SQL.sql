@@ -112,6 +112,7 @@ CREATE TABLE Usuario(
 	Senha              VARBINARY(32) NOT NULL,
 	Email              VARCHAR(150) UNIQUE NOT NULL,
 	Ativo              BIT DEFAULT 1,
+	PrimeiroAcesso     BIT NOT NULL DEFAULT 1,
 	EnderecoID         UNIQUEIDENTIFIER NOT NULL,
 	CargoID            UNIQUEIDENTIFIER NOT NULL,
 	TipoUsuarioID      UNIQUEIDENTIFIER NOT NULL,
@@ -259,20 +260,20 @@ GO
 -- DML
 -- AREA
 INSERT INTO Area (NomeArea) VALUES
-('Bloco A - Térreo'),
-('Bloco A - 1° Andar')
+('Bloco A - Tï¿½rreo'),
+('Bloco A - 1ï¿½ Andar')
 GO
 
 -- TIPO USUARIO
 INSERT INTO TipoUsuario (NomeTipo) VALUES
-('Responsável'),
+('Responsï¿½vel'),
 ('Coordenador')
 GO
 
 -- CARGO
 INSERT INTO Cargo (NomeCargo) VALUES
 ('Diretor'),
-('Instrutor de Formação Profissional II')
+('Instrutor de Formaï¿½ï¿½o Profissional II')
 GO
 
 -- TIPO PATRIMONIO
@@ -286,7 +287,7 @@ INSERT INTO StatusPatrimonio (NomeStatus) VALUES
 ('Inativo'),
 ('Ativo'),
 ('Transferido'),
-('Em manutenção')
+('Em manutenï¿½ï¿½o')
 GO
 
 -- STATUS TRANSFERENCIA
@@ -298,22 +299,22 @@ GO
 
 -- TIPO ALTERACAO
 INSERT INTO TipoAlteracao (NomeTipo) VALUES
-('Atualização de dados'),
-('Transferência')
+('Atualizaï¿½ï¿½o de dados'),
+('Transferï¿½ncia')
 GO
 
 -- CIDADE
 INSERT INTO Cidade (NomeCidade, Estado) VALUES
-('São Caetano do Sul', 'São Paulo'),
-('Diadema', 'São Paulo')
+('Sï¿½o Caetano do Sul', 'Sï¿½o Paulo'),
+('Diadema', 'Sï¿½o Paulo')
 GO
 
 -- LOCAL
 INSERT INTO Localizacao (LocalSAP, DescricaoSAP, NomeLocal, AreaID) VALUES
-(NULL, NULL, 'Manutenção', (SELECT AreaID FROM Area WHERE NomeArea = 'Bloco A - Térreo'))
+(NULL, NULL, 'Manutenï¿½ï¿½o', (SELECT AreaID FROM Area WHERE NomeArea = 'Bloco A - Tï¿½rreo'))
 GO
 
 -- BAIRRO
 INSERT INTO Bairro (NomeBairro, CidadeID) VALUES
-('Centro', (SELECT CidadeID FROM Cidade WHERE NomeCidade = 'São Caetano do Sul'))
+('Centro', (SELECT CidadeID FROM Cidade WHERE NomeCidade = 'Sï¿½o Caetano do Sul'))
 GO

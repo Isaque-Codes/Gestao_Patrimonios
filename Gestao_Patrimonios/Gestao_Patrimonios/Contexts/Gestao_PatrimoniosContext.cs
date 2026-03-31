@@ -350,6 +350,7 @@ public partial class Gestao_PatrimoniosContext : DbContext
             entity.Property(e => e.Nome)
                 .HasMaxLength(150)
                 .IsUnicode(false);
+            entity.Property(e => e.PrimeiroAcesso).HasDefaultValue(true);
             entity.Property(e => e.RG)
                 .HasMaxLength(15)
                 .IsUnicode(false);
