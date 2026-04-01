@@ -6,6 +6,6 @@ namespace Gestao_Patrimonios.DTOs.BairroDto
     {
         public string NomeBairro { get; set; } = string.Empty;
 
-        public Cidade Cidade { get; set; }
+        public Guid CidadeID { get; set; }
     }
 }

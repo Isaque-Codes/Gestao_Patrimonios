@@ -6,7 +6,7 @@ namespace Gestao_Patrimonios.Interfaces
     {
         List<Localizacao> Listar();
 
-        Localizacao BuscarPorId(Guid id);
+        Localizacao BuscarPorId(Guid localId);
 
         Localizacao BuscarPorNome(Guid areaId, string nomeLocal);
 

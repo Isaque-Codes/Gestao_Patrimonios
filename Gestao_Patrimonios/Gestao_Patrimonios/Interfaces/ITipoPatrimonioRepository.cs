@@ -6,12 +6,12 @@ namespace Gestao_Patrimonios.Interfaces
     {
         List<TipoPatrimonio> Listar();
 
-        TipoPatrimonio BuscarPorId(Guid id);
+        TipoPatrimonio BuscarPorId(Guid tipoPatrimonioId);
 
-        TipoPatrimonio BuscarPorNome(string nome);
+        TipoPatrimonio BuscarPorNome(string nomeTipo);
 
-        void Adicionar(TipoPatrimonio tipo);
+        void Adicionar(TipoPatrimonio tipoPatrimonio);
 
-        void Atualizar(TipoPatrimonio tipo);
+        void Atualizar(TipoPatrimonio tipoPatrimonio);
     }
 }

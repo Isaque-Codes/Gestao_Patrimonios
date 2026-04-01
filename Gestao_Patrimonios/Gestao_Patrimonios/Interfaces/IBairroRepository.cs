@@ -6,13 +6,14 @@ namespace Gestao_Patrimonios.Interfaces
     {
         List<Bairro> Listar();
 
-        Bairro BuscarPorId(Guid id);
+        Bairro BuscarPorId(Guid bairroId);
 
-        Bairro BuscarPorNome(string nome);
+        Bairro BuscarPorNome(string nomeBairro, Guid cidadeId);
+
+        bool CidadeExistente(Guid cidadeId);
 
         void Adicionar(Bairro bairro);
 
         void Atualizar(Bairro bairro);
-
     }
 }
