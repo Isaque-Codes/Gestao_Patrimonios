@@ -34,7 +34,7 @@ namespace Gestao_Patrimonios.Repositories
             );
         }
 
-        public bool CidadeExiste(Guid cidadeId)
+        public bool CidadeExistente(Guid cidadeId)
         {
             return _context.Cidade.Any(c => c.CidadeID == cidadeId);
         }

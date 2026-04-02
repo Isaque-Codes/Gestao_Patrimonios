@@ -58,7 +58,7 @@ namespace Gestao_Patrimonios.Applications.Services
                 throw new DomainException("Já existe um bairro com este nome nesta cidade.");
             }
 
-            if (!_repository.CidadeExiste(dto.CidadeID))
+            if (!_repository.CidadeExistente(dto.CidadeID))
             {
                 throw new DomainException("Cidade informada não existe.");
             }
@@ -90,7 +90,7 @@ namespace Gestao_Patrimonios.Applications.Services
                 throw new DomainException("Já existe um bairro com esse nome nessa cidade.");
             }
 
-            if (!_repository.CidadeExiste(dto.CidadeID))
+            if (!_repository.CidadeExistente(dto.CidadeID))
             {
                 throw new DomainException("Cidade informada não existe.");
             }

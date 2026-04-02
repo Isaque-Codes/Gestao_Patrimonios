@@ -2,6 +2,7 @@
 using Gestao_Patrimonios.Contexts;
 using Gestao_Patrimonios.Domains;
 using Gestao_Patrimonios.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gestao_Patrimonios.Repositories
 {
