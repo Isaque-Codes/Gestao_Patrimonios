@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Contexts;
 using Gestao_Patrimonios.Domains;
 using Gestao_Patrimonios.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gestao_Patrimonios.Repositories
 {
@@ -16,23 +17,28 @@ namespace Gestao_Patrimonios.Repositories
 
         public List<Localizacao> Listar()
         {
-            return _context.Localizacao.OrderBy(l => l.NomeLocal).ToList();
+            return _context.Localizacao.AsNoTracking()
+                .OrderBy(l => l.NomeLocal).ToList();
         }
 
         public Localizacao BuscarPorId(Guid localizacaoId)
         {
-            return _context.Localizacao.Find(localizacaoId);
+            return _context.Localizacao.AsNoTracking()
+                .FirstOrDefault(l => l.LocalizacaoID == localizacaoId);
         }
 
         public Localizacao BuscarPorNome(Guid areaId, string nomeLocal)
         {
-            return _context.Localizacao.FirstOrDefault
-                (l => l.NomeLocal.ToLower() == nomeLocal.ToLower() && l.AreaID == areaId);
+            return _context.Localizacao.AsNoTracking()
+                .FirstOrDefault(l =>
+                l.NomeLocal.ToLower() == nomeLocal.ToLower() &&
+                l.AreaID == areaId);
         }
 
         public bool AreaExistente(Guid areaId)
         {
-            return _context.Area.Any(area => area.AreaID == areaId);
+            return _context.Area.AsNoTracking()
+                .Any(area => area.AreaID == areaId);
         }
 
         public void Adicionar(Localizacao localizacao)

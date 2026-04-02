@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Contexts;
 using Gestao_Patrimonios.Domains;
 using Gestao_Patrimonios.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gestao_Patrimonios.Repositories
 {
@@ -15,7 +16,8 @@ namespace Gestao_Patrimonios.Repositories
 
         public List<Usuario> Listar()
         {
-            return _context.Usuario.OrderBy(u => u.Nome).ToList();
+            return _context.Usuario.AsNoTracking()
+                .OrderBy(u => u.Nome).ToList();
         }
     }
 }

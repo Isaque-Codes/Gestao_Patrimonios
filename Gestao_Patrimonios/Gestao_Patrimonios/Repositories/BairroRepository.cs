@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Contexts;
 using Gestao_Patrimonios.Domains;
 using Gestao_Patrimonios.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace Gestao_Patrimonios.Repositories
@@ -16,19 +17,21 @@ namespace Gestao_Patrimonios.Repositories
 
         public List<Bairro> Listar()
         {
-            return _context.Bairro
+            return _context.Bairro.AsNoTracking()
                 .OrderBy(b => b.NomeBairro)
                 .ToList();
         }
 
         public Bairro BuscarPorId(Guid bairroId)
         {
-            return _context.Bairro.Find(bairroId);
+            return _context.Bairro.AsNoTracking()
+                .FirstOrDefault(b => b.BairroID == bairroId);
         }
 
         public Bairro BuscarPorNome(string nomeBairro, Guid cidadeId)
         {
-            return _context.Bairro.FirstOrDefault(b =>
+            return _context.Bairro.AsNoTracking()
+                .FirstOrDefault(b =>
                 b.NomeBairro.ToLower() == nomeBairro.ToLower() &&
                 b.CidadeID == cidadeId
             );
@@ -36,7 +39,7 @@ namespace Gestao_Patrimonios.Repositories
 
         public bool CidadeExistente(Guid cidadeId)
         {
-            return _context.Cidade.Any(c => c.CidadeID == cidadeId);
+            return _context.Cidade.AsNoTracking().Any(c => c.CidadeID == cidadeId);
         }
 
         public void Adicionar(Bairro bairro)

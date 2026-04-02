@@ -44,7 +44,8 @@ namespace Gestao_Patrimonios.Repositories
 
         public bool BairroExistente(Guid bairroId)
         {
-            return _context.Bairro.Any(b => b.BairroID == bairroId);
+            return _context.Bairro.AsNoTracking()
+                .Any(b => b.BairroID == bairroId);
         }
 
         public void Adicionar(Endereco endereco)

@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Contexts;
 using Gestao_Patrimonios.Domains;
 using Gestao_Patrimonios.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gestao_Patrimonios.Repositories
 {
@@ -15,17 +16,21 @@ namespace Gestao_Patrimonios.Repositories
 
         public List<Area> Listar()
         {
-            return _context.Area.OrderBy(a => a.NomeArea).ToList();
+            return _context.Area.AsNoTracking()
+                .OrderBy(a => a.NomeArea)
+                .ToList();
         }
 
         public Area BuscarPorId(Guid areaId)
         {
-            return _context.Area.Find(areaId);
+            return _context.Area.AsNoTracking()
+                .FirstOrDefault(a => a.AreaID == areaId);
         }
 
         public Area BuscarPorNome(string nomeArea)
         {
-            return _context.Area.FirstOrDefault(a => a.NomeArea.ToLower() == nomeArea.ToLower());
+            return _context.Area.AsNoTracking()
+                .FirstOrDefault(a => a.NomeArea.ToLower() == nomeArea.ToLower());
         }
 
         public void Adicionar(Area area)

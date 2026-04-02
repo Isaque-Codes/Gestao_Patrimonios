@@ -17,19 +17,23 @@ namespace Gestao_Patrimonios.Repositories
 
         public List<Cidade> Listar()
         {
-            return _context.Cidade.OrderBy(c => c.NomeCidade).ToList();
+            return _context.Cidade.AsNoTracking().
+                OrderBy(c => c.NomeCidade)
+                .ToList();
         }
 
         public Cidade BuscarPorId(Guid cidadeId)
         {
-            return _context.Cidade.Find(cidadeId);
+            return _context.Cidade.AsNoTracking()
+                .FirstOrDefault(c => c.CidadeID == cidadeId);
         }
 
         public Cidade? BuscarPorNomeEEstado(string nomeCidade, string estado)
         {
-            return _context.Cidade.FirstOrDefault(cidade =>
-                cidade.NomeCidade.ToLower() == nomeCidade.ToLower() &&
-                cidade.Estado.ToLower() == estado.ToLower());
+            return _context.Cidade.AsNoTracking()
+                .FirstOrDefault(c =>
+                c.NomeCidade.ToLower() == nomeCidade.ToLower() &&
+                c.Estado.ToLower() == estado.ToLower());
         }
 
         public void Adicionar(Cidade cidade)
