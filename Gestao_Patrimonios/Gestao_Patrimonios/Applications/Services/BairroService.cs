@@ -49,7 +49,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Adicionar(CriarBairroDto dto)
         {
-            ValidarNome.Bairro(dto.NomeBairro);
+            ValidarCampo.Bairro(dto.NomeBairro);
 
             Bairro bairroExistente = _repository.BuscarPorNome(dto.NomeBairro, dto.CidadeID);
 
@@ -74,7 +74,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Atualizar(Guid bairroId, CriarBairroDto dto)
         {
-            ValidarNome.Bairro(dto.NomeBairro);
+            ValidarCampo.Bairro(dto.NomeBairro);
 
             Bairro bairroBanco = _repository.BuscarPorId(bairroId);
 

@@ -52,8 +52,8 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Adicionar(CriarCidadeDto dto)
         {
-            ValidarNome.Cidade(dto.NomeCidade);
-            ValidarNome.Estado(dto.Estado);
+            ValidarCampo.Cidade(dto.NomeCidade);
+            ValidarCampo.Estado(dto.Estado);
 
             Cidade? cidadeExistente = _repository.BuscarPorNomeEEstado(dto.NomeCidade, dto.Estado);
 
@@ -73,8 +73,8 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Atualizar(Guid cidadeId, CriarCidadeDto dto)
         {
-            ValidarNome.Cidade(dto.NomeCidade);
-            ValidarNome.Estado(dto.Estado);
+            ValidarCampo.Cidade(dto.NomeCidade);
+            ValidarCampo.Estado(dto.Estado);
 
             Cidade? cidadeBanco = _repository.BuscarPorId(cidadeId);
 

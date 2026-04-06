@@ -53,7 +53,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Adicionar(CriarLocalizacaoDto dto)
         {
-            ValidarNome.Local(dto.NomeLocal);
+            ValidarCampo.Local(dto.NomeLocal);
 
             Localizacao localExistente = _repository.BuscarPorNome(dto.AreaID, dto.NomeLocal);
 
@@ -81,7 +81,7 @@ namespace Gestao_Patrimonios.Applications.Services
 
         public void Atualizar(Guid id, CriarLocalizacaoDto dto)
         {
-            ValidarNome.Local(dto.NomeLocal);
+            ValidarCampo.Local(dto.NomeLocal);
 
             Localizacao localExistente = _repository.BuscarPorNome(dto.AreaID, dto.NomeLocal);
 
