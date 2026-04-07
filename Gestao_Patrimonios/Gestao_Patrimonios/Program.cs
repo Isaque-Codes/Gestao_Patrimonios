@@ -27,6 +27,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<UsuarioService>();
 
+//LOG PATRIMÔNIO
+builder.Services.AddScoped<ILogPatrimonioRepository, LogPatrimonioRepository>();
+builder.Services.AddScoped<LogPatrimonioService>();
+
 // ÁREA
 builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 builder.Services.AddScoped<AreaService>();

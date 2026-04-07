@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Applications.Services;
 using Gestao_Patrimonios.DTOs.UsuarioDto;
 using Gestao_Patrimonios.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace Gestao_Patrimonios.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult<List<ListarUsuarioDto>> Listar()
         {
@@ -25,6 +27,7 @@ namespace Gestao_Patrimonios.Controllers
             return Ok(usuarios);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<ListarUsuarioDto> BuscarPorId(Guid id)
         {
@@ -41,6 +44,7 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPost]
         public ActionResult Adicionar(CriarUsuarioDto dto)
         {
@@ -57,6 +61,7 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPut("{id}")]
         public ActionResult Atualizar(Guid id, CriarUsuarioDto dto)
         {
@@ -73,6 +78,7 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPatch("{id}/status")]
         public ActionResult AtualizarStatus(Guid id, AtualizarStatusUsuarioDto dto)
         {

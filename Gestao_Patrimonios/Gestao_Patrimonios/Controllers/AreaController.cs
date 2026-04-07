@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Applications.Services;
 using Gestao_Patrimonios.DTOs.AreaDto;
 using Gestao_Patrimonios.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<List<ListarAreaDto>> Listar()
         {
             List<ListarAreaDto> areas = _service.Listar();
@@ -25,6 +27,7 @@ namespace Gestao_Patrimonios.Controllers
             return Ok(areas);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<ListarAreaDto> BuscarPorId(Guid id)
         {
@@ -41,6 +44,7 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPost]
         public ActionResult Adicionar(CriarAreaDto dto)
         {
@@ -57,6 +61,7 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
+        [Authorize(Roles = "Coordenador")]
         [HttpPut("{id}")]
         public ActionResult Atualizar(Guid id, CriarAreaDto dto)
         {

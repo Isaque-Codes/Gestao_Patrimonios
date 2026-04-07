@@ -49,7 +49,12 @@ namespace Gestao_Patrimonios.Applications.Regras
         public static void CPF(this string cpf) =>
             cpf.Validar("O CPF é obrigatório.");
 
+        // EMAIL
         public static void Email(this string email) =>
             email.Validar("O email é obrigatório.");
+
+        // SENHA
+        public static void Senha(this string senha) =>
+            senha.Validar("O email é obrigatório.");
     }
 }
