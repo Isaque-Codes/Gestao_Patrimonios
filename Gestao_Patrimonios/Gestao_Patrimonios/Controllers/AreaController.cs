@@ -27,8 +27,8 @@ namespace Gestao_Patrimonios.Controllers
             return Ok(areas);
         }
 
-        [Authorize]
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<ListarAreaDto> BuscarPorId(Guid id)
         {
             try
@@ -44,8 +44,8 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
-        [Authorize(Roles = "Coordenador")]
         [HttpPost]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Adicionar(CriarAreaDto dto)
         {
             try
@@ -61,8 +61,8 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
-        [Authorize(Roles = "Coordenador")]
         [HttpPut("{id}")]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Atualizar(Guid id, CriarAreaDto dto)
         {
             try

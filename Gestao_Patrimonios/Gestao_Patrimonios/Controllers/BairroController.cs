@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Applications.Services;
 using Gestao_Patrimonios.DTOs.BairroDto;
 using Gestao_Patrimonios.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gestao_Patrimonios.Controllers
@@ -17,12 +18,14 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<List<ListarBairroDto>> Listar()
         {
             return Ok(_service.Listar());
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<ListarBairroDto> BuscarPorId(Guid id)
         {
             try
@@ -37,6 +40,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Adicionar(CriarBairroDto dto)
         {
             try
@@ -53,6 +57,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Atualizar(Guid id, CriarBairroDto dto)
         {
             try

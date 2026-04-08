@@ -18,8 +18,8 @@ namespace Gestao_Patrimonios.Controllers
             _service = service;
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize]
         public ActionResult<List<ListarUsuarioDto>> Listar()
         {
             List<ListarUsuarioDto> usuarios = _service.Listar();
@@ -27,8 +27,8 @@ namespace Gestao_Patrimonios.Controllers
             return Ok(usuarios);
         }
 
-        [Authorize]
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<ListarUsuarioDto> BuscarPorId(Guid id)
         {
             try
@@ -44,8 +44,8 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
-        [Authorize(Roles = "Coordenador")]
         [HttpPost]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Adicionar(CriarUsuarioDto dto)
         {
             try
@@ -61,8 +61,8 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
-        [Authorize(Roles = "Coordenador")]
         [HttpPut("{id}")]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Atualizar(Guid id, CriarUsuarioDto dto)
         {
             try
@@ -78,8 +78,8 @@ namespace Gestao_Patrimonios.Controllers
             }
         }
 
-        [Authorize(Roles = "Coordenador")]
         [HttpPatch("{id}/status")]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult AtualizarStatus(Guid id, AtualizarStatusUsuarioDto dto)
         {
             try

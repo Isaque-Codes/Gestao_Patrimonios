@@ -1,6 +1,7 @@
 ﻿using Gestao_Patrimonios.Applications.Services;
 using Gestao_Patrimonios.DTOs.LocalizacaoDto;
 using Gestao_Patrimonios.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<List<ListarLocalizacaoDto>> Listar()
         {
             List<ListarLocalizacaoDto> localizacoes = _service.Listar();
@@ -26,6 +28,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult<ListarLocalizacaoDto> BuscarPorId(Guid id)
         {
             try
@@ -42,6 +45,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Adicionar(CriarLocalizacaoDto dto)
         {
             try
@@ -58,6 +62,7 @@ namespace Gestao_Patrimonios.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Coordenador")]
         public ActionResult Atualizar(Guid id, CriarLocalizacaoDto dto)
         {
             try
