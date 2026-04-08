@@ -27,6 +27,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<UsuarioService>();
 
+// CARGO
+builder.Services.AddScoped<ICargoRepository, CargoRepository>();
+builder.Services.AddScoped<CargoService>();
+
+// STATUS PATRIMÔNIO
+builder.Services.AddScoped<IStatusPatrimonioRepository, StatusPatrimonioRepository>();
+builder.Services.AddScoped<StatusPatrimonioService>();
+
 //LOG PATRIMÔNIO
 builder.Services.AddScoped<ILogPatrimonioRepository, LogPatrimonioRepository>();
 builder.Services.AddScoped<LogPatrimonioService>();

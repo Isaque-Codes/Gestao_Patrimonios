@@ -56,5 +56,13 @@ namespace Gestao_Patrimonios.Applications.Regras
         // SENHA
         public static void Senha(this string senha) =>
             senha.Validar("O email é obrigatório.");
+
+        // STATUS
+        public static void Status(this string status) =>
+            status.Validar("O status é obrigatório.");
+
+        // CARGO
+        public static void Cargo(this string cargo) =>
+            cargo.Validar("O status é obrigatório.");
     }
 }
