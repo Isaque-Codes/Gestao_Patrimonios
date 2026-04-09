@@ -27,7 +27,7 @@ namespace Gestao_Patrimonios.Repositories
                 .FirstOrDefault(s => s.TransferenciaID == transferenciaId);
         }
 
-        public StatusTransferencia BuscarStatusPorNome(string nomeStatus)
+        public StatusTransferencia BuscarStatusTransferenciaPorNome(string nomeStatus)
         {
             return _context.StatusTransferencia.AsNoTracking()
                 .FirstOrDefault(s => s.NomeStatus.ToLower() == nomeStatus.ToLower());
@@ -35,7 +35,7 @@ namespace Gestao_Patrimonios.Repositories
 
         public bool SolicitacaoPendenteExistente(Guid patrimonioId)
         {
-            StatusTransferencia statusPendente = BuscarStatusPorNome("Pendente de aprovação");
+            StatusTransferencia statusPendente = BuscarStatusTransferenciaPorNome("Pendente de aprovação");
 
             if (statusPendente == null)
             {
@@ -69,6 +69,67 @@ namespace Gestao_Patrimonios.Repositories
         public void Adicionar(SolicitacaoTransferencia solicitacao)
         {
             _context.SolicitacaoTransferencia.Add(solicitacao);
+            _context.SaveChanges();
+        }
+
+        public StatusPatrimonio BuscarStatusPatrimonioPorNome(string nomeStatus)
+        {
+            return _context.StatusPatrimonio.AsNoTracking()
+                .FirstOrDefault(s => s.NomeStatus.ToLower() == nomeStatus.ToLower());
+        }
+
+        public TipoAlteracao BuscarTipoAlteracaoPorNome(string nomeTipo)
+        {
+            return _context.TipoAlteracao.AsNoTracking()
+                .FirstOrDefault(t => t.NomeTipo.ToLower() == nomeTipo.ToLower());
+        }
+
+        public void Atualizar(SolicitacaoTransferencia solicitacao)
+        {
+            if (solicitacao == null)
+            {
+                return;
+            }
+
+            SolicitacaoTransferencia solicitacaoBanco = _context.SolicitacaoTransferencia
+                .Find(solicitacao.TransferenciaID);
+
+            if (solicitacaoBanco == null)
+            {
+                return;
+            }
+
+            solicitacaoBanco.DataResposta = solicitacao.DataResposta;
+            solicitacaoBanco.StatusTransferenciaID = solicitacao.StatusTransferenciaID;
+            solicitacaoBanco.UsuarioSolicitadoID = solicitacao.UsuarioSolicitadoID;
+
+            _context.SaveChanges();
+        }
+
+        public void AtualizarPatrimonio(Patrimonio patrimonio)
+        {
+            if (patrimonio == null)
+            {
+                return;
+            }
+
+            Patrimonio patrimonioBanco = _context.Patrimonio
+                .Find(patrimonio.PatrimonioID);
+
+            if (patrimonioBanco == null)
+            {
+                return;
+            }
+
+            patrimonioBanco.LocalizacaoID = patrimonio.LocalizacaoID;
+            patrimonioBanco.StatusPatrimonioID = patrimonio.StatusPatrimonioID;
+
+            _context.SaveChanges();
+        }
+
+        public void AdicionarLog(LogPatrimonio log)
+        {
+            _context.LogPatrimonio.Add(log);
             _context.SaveChanges();
         }
     }

@@ -16,8 +16,18 @@ namespace Gestao_Patrimonios.Interfaces
 
         Patrimonio BuscarPatrimonioPorId(Guid patrimonioId);
 
-        StatusTransferencia BuscarStatusPorNome(string nomeStatus);
+        StatusTransferencia BuscarStatusTransferenciaPorNome(string nomeStatus);
+
+        StatusPatrimonio BuscarStatusPatrimonioPorNome(string nomeStatus);
+
+        TipoAlteracao BuscarTipoAlteracaoPorNome(string nomeTipo);
 
         void Adicionar(SolicitacaoTransferencia solicitacao);
+
+        void Atualizar(SolicitacaoTransferencia solicitacao);
+
+        void AtualizarPatrimonio(Patrimonio patrimonio);
+
+        void AdicionarLog(LogPatrimonio log);
     }
 }

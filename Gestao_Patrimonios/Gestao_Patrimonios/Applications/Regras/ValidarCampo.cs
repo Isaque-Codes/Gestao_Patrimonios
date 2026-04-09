@@ -64,5 +64,9 @@ namespace Gestao_Patrimonios.Applications.Regras
         // CARGO
         public static void Cargo(this string cargo) =>
             cargo.Validar("O status é obrigatório.");
+
+        // JUSTIFICATIVA
+        public static void Justificativa(this string justificativa) =>
+            justificativa.Validar("A Justificativa é obrigatória.");
     }
 }
