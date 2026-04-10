@@ -63,7 +63,11 @@ builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<ICargoRepository, CargoRepository>();
 builder.Services.AddScoped<CargoService>();
 
-// STATUS TRANSFERÊNCIA
+// PATRIMÔNIO
+builder.Services.AddScoped<IPatrimonioRepository, PatrimonioRepository>();
+builder.Services.AddScoped<PatrimonioService>();
+
+// SOLICITAÇÃO TRANSFERÊNCIA
 builder.Services.AddScoped<ISolicitacaoTransferenciaRepository, SolicitacaoTransferenciaRepository>();
 builder.Services.AddScoped<SolicitacaoTransferenciaService>();
 

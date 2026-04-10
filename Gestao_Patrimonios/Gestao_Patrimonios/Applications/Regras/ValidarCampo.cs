@@ -68,5 +68,13 @@ namespace Gestao_Patrimonios.Applications.Regras
         // JUSTIFICATIVA
         public static void Justificativa(this string justificativa) =>
             justificativa.Validar("A Justificativa é obrigatória.");
+
+        // NÚMERO DE PATRIMÔNIO
+        public static void NumeroPatrimonio(this string numeroPatrimonio) =>
+            numeroPatrimonio.Validar("O número do patrimônio é obrigatório.");
+
+        // DENOMINAÇÃO
+        public static void Denominação(this string denominação) =>
+            denominação.Validar("A denominação é obrigatória.");
     }
 }

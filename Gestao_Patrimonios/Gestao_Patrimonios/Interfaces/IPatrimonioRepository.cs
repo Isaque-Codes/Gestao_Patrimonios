@@ -8,19 +8,22 @@ namespace Gestao_Patrimonios.Interfaces
 
         Patrimonio BuscarPorId(Guid patrimonioId);
 
-        // Usar AsQueryable
-        Patrimonio BuscarPorNumeroPatrimonio(string numeroPatrimonio, Guid? patrimonioId = null);
+        bool BuscarPorNumeroPatrimonio(string numeroPatrimonio);
 
         bool LocalizacaoExistente(Guid localizacaoId);
-
-        bool TipoPatrimonioExistente(Guid tipoPatrimonioId);
 
         bool StatusPatrimonioExistente(Guid statusPatrimonioId);
 
         void Adicionar(Patrimonio patrimonio);
 
-        void Atualizar(Patrimonio patrimonio);
-
         void AtualizarStatus(Patrimonio patrimonio);
+
+        void AdicionarLog(LogPatrimonio logPatrimonio);
+
+        Localizacao BuscarLocalizacaoPorNome(string nomeLocalizacao);
+
+        StatusPatrimonio BuscarStatusPatrimonioPorNome(string nomeStatus);
+
+        TipoAlteracao BuscarTipoAlteracaoPorNome(string nomeTipo);
     }
 }
